@@ -2,17 +2,18 @@
 const canvas = document.querySelector('#sketch');
 const ctx = canvas.getContext('2d');
 const btn = document.querySelector('.shake');
+const MAX = 30;
 
 // Using JS object destructing to create and assign values
 const { width, height } = canvas;
 
 // Random Dot on canvas from where it will start
-const x = Math.ceil(Math.random() * width);
-const y = Math.ceil(Math.random() * height);
+let x = Math.ceil(Math.random() * width);
+let y = Math.ceil(Math.random() * height);
 
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 30;
+ctx.lineWidth = MAX;
 
 // Adding a color to it using Mother-effing hsl https://mothereffinghsl.com/
 let hue = 0;
@@ -25,8 +26,23 @@ ctx.stroke();
 // Draw function
 function draw({ key }) {
   hue += 1;
-  console.log(hue);
-  ctx.strokeStyle = `hsl(${Math.random * 360}, 100%, 50%)`;
+  ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  // console.log(key);
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+
+  // Where the Arrow goes
+  if (key === 'ArrowUp') {
+    y -= MAX;
+  } else if (key === 'ArrowDown') {
+    y += MAX;
+  } else if (key === 'ArrowRight') {
+    x += MAX;
+  } else if (key === 'ArrowLeft') {
+    x -= MAX;
+  }
+  ctx.lineTo(x, y);
+  ctx.stroke();
 }
 
 // Listen to Arroy keys
@@ -41,9 +57,9 @@ btn.addEventListener('click', function() {
   canvas.classList.add('shake');
   ctx.clearRect(0, 0, width, height);
   canvas.addEventListener(
-    'animationed',
+    'animationend',
     function() {
-      console.log('Shake and Clear Done');
+      console.log('Done the shake!');
       canvas.classList.remove('shake');
     },
     { once: true }
