@@ -8,17 +8,54 @@ body {
     background-size: cover;
 }
 
+h2 {
+    color: #111;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    padding-bottom: 0;
+}
+
 canvas {
-    border: 30px solid #196e68;
+    border: 30px solid #393160;
     border-radius: 10px;
-    /* Set the width and height to half the actual size so it doesn't look pixelated */
     width: 800px;
     height: 500px;
-    background: white;
+    background: #FFFAFA;
 }
 
 canvas.shake {
     animation: shake 0.5s linear 1;
+}
+
+.shake {
+    display: inline-block;
+    padding: 0.46em 1.6em;
+    border: 0.1em solid #000000;
+    margin: 0 0.2em 0.2em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #000000;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    background-color: #FFFFFF;
+    text-align: center;
+    transition: all 0.15s;
+}
+
+.shake:hover {
+    text-shadow: 0 0 2em rgba(255, 255, 255, 1);
+    color: #3369ff;
+    border-color: #3369ff;
+}
+
+@media all and (max-width:30em) {
+    a.button5 {
+        display: block;
+        margin: 0.4em auto;
+    }
 }
 
 @keyframes shake {
