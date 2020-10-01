@@ -8,8 +8,8 @@ const MAX = 30;
 const { width, height } = canvas;
 
 // Random Dot on canvas from where it will start
-let x = Math.ceil(Math.random() * width);
-let y = Math.ceil(Math.random() * height);
+let x = Math.ceil(Math.random() * (width/MAX-1))*MAX + MAX/2;
+let y = Math.ceil(Math.random() * (height/MAX-1))*MAX + MAX/2;
 
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
@@ -32,13 +32,13 @@ function draw({ key }) {
   ctx.moveTo(x, y);
 
   // Where the Arrow goes
-  if (key === 'ArrowUp') {
+  if (key === 'ArrowUp' && y>MAX/2) {
     y -= MAX;
-  } else if (key === 'ArrowDown') {
+  } else if (key === 'ArrowDown' && y<((height/MAX-1)*MAX + MAX/2)) {
     y += MAX;
-  } else if (key === 'ArrowRight') {
+  } else if (key === 'ArrowRight' && x<((width/MAX-1)*MAX + MAX/2)) {
     x += MAX;
-  } else if (key === 'ArrowLeft') {
+  } else if (key === 'ArrowLeft' && x>MAX/2) {
     x -= MAX;
   }
   ctx.lineTo(x, y);
