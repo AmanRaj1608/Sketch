@@ -64,4 +64,16 @@ btn.addEventListener('click', function() {
     },
     { once: true }
   );
+
+  // New Random Position for Pointer after "clear it!"
+  x = Math.ceil(Math.random() * (width/MAX-1))*MAX + MAX/2;
+  y = Math.ceil(Math.random() * (height/MAX-1))*MAX + MAX/2;
+
+  // New Random Color for Pointer
+  ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x, y);
+  ctx.stroke();
 });
