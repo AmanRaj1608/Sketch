@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Sketch JS</title>
-    <link rel="stylesheet" href="./main.css">
-</head>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
 
-<body>
-    <h2> Use keyboard Arrow Up, Down, Left and Right keys to Draw on Canvas</h2>
+  <body>
+    <h2>Use keyboard Arrow Up, Down, Left and Right keys to Draw on Canvas</h2>
     <div class="canvasWrap">
-        <canvas width="1620" height="1020" id="sketch"></canvas>
-        <div class="buttons">
-            <button class="shake">Clear It!</button>
+      <canvas width="1620" height="1020" id="sketch"></canvas>
+      <div class="buttons">
+        <button class="shake btn">Clear It!</button>
+        <div class="action--buttons">
+          <button class="btn draw" id="left">Left</button>
+          <button class="btn draw" id="up">Top</button>
+          <button class="btn draw" id="down">Bottom</button>
+          <button class="btn draw" id="right">Right</button>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 
-<script src="./app.js"></script>
-
+  <script src="./app.js"></script>
 </html>
