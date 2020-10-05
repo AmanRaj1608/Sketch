@@ -1,7 +1,9 @@
 body {
   min-height: 100vh;
-  background: white;
-  background: url(https://source.unsplash.com/user/erondu/1600x900);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background: url(https://source.unsplash.com/user/erondu/1600x900) white;
   background-size: cover;
 }
 
@@ -61,6 +63,7 @@ canvas.shake {
   canvas {
     width: 100%;
     max-width: 85vw;
+    align-items: flex-start;
     height: auto;
   }
   .action--buttons {

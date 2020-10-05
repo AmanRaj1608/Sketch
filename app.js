@@ -58,7 +58,7 @@ drawBtn.map((btn) => {
     intervall = setInterval(() => {
       e.preventDefault();
       draw({ key: e.target.id });
-    }, 20);
+    }, 50);
   });
   btn.addEventListener("mouseup", function (e) {
     clearInterval(intervall);
