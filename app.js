@@ -29,7 +29,6 @@ ctx.stroke();
 function draw({ key }) {
   hue += 1;
   ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
-  // console.log(key);
   ctx.beginPath();
   ctx.moveTo(x, y);
 
@@ -52,6 +51,38 @@ function draw({ key }) {
   ctx.lineTo(x, y);
   ctx.stroke();
 }
+
+canvas.addEventListener("mousedown", function (event) {
+  isMousedown = true;
+});
+
+canvas.addEventListener("mouseup", function (event) {
+  isMousedown = false;
+});
+
+let prevCoordinates = { x: x, y: y };
+let isMousedown = false;
+
+function mouseDraw() {
+  hue += 1;
+  ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  ctx.beginPath();
+  ctx.moveTo(prevCoordinates.x, prevCoordinates.y);
+  ctx.lineTo(prevCoordinates.x, prevCoordinates.y);
+  ctx.stroke();
+}
+
+canvas.addEventListener("mousemove", function (e) {
+  if (isMousedown) {
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    mouseDraw();
+    prevCoordinates.x = (e.clientX - rect.left) * scaleX;
+    prevCoordinates.y = (e.clientY - rect.top) * scaleY;
+  }
+});
 
 drawBtn.map((btn) => {
   btn.addEventListener("mousedown", function (e) {
